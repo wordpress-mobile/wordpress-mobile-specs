@@ -10,6 +10,14 @@ The apps support multiple URL handling mechanisms:
 2. **HTTPS Universal/App Links** - `https://wordpress.com/*` and `https://jetpack.com/*` web URLs that open in the app
 3. **QR Code Authentication** - Special handling for QR-based login flows
 
+### User Experience
+
+### Don't stack identical content
+When the app opens a universal link, it should check whether the content is already being displayed. If so, it should not present the content again.
+
+### Show progress
+When the app opens a universal link, it should display a progress indicator that it's working. If the app later determines that the content cannot be displayed because the user doesn't have access, it should show the error messsage provided by the server.
+
 ## Supported URL Schemes
 
 ### Custom Scheme: `wordpress://`
@@ -94,7 +102,7 @@ Both platforms support opening HTTPS links directly in the app instead of the br
 - `https://apps.wordpress.com/get?campaign=qr-code-media` - QR media library access
 
 **Email Tracking / Marketing Redirects:**
-TODO
+
 
 ## Error Handling
 
@@ -118,11 +126,19 @@ Both platforms intercept deep links that require authentication:
 2. Present the WP.com login flow
 3. On Success, redirect the user to their intended destination.
 
----
-
 ## Analytics and Tracking
 
-TODO: Outline Tracks events
+Every deep link that's received by the app (whether it's handled or passed back to a browser) should track the following:
+
+**Event Name**
+`(wp|jp)(android|ios)_deep_linked`
+
+**Event Parameters**
+- `url`: The format of the handled link (ex: `/:post_year/:post_month/:post_day/:post_name` or `/me/account`)
+- `source_info`: The source of the deep link, if known (ex: `calypso-banner`, `link`, `email`)
+- `hostname`: The `host` portion of the URL: (ex: `wordpress.com`, `public-api.wordpress.com`, `mysite.wordpress.com`)
+- `scheme`: The `scheme` portion of the URL: (ex: `http`, `https`, `wordpress`, `jetpack`)
+- `handled`: Was that app able to handle the link?
 
 ## Testing Recommendations
 
@@ -151,7 +167,7 @@ TODO: Outline Tracks events
    - Verify appropriate error messages
 
 5. **Analytics**
-TODO
+  - When running any of the tests above, validate that the event shows up in Tracks.
 
 ### Platform-Specific Tests
 
