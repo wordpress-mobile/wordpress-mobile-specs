@@ -33,8 +33,7 @@ Both platforms support opening HTTPS links directly in the app instead of the br
 - `wordpress.com` - Primary domain for both platforms
 - `jetpack.com` - Supported on iOS
 - `apps.wordpress.com` - Special handling for marketing campaigns and QR codes
-- `public-api.wordpress.com/mbar/*` - Mobile email tracking links (Android supports it)
-- `public-api.wordpress.com/bar/*` - Email tracking links (Android supports it)
+- `public-api.wordpress.com` - Email tracking links (Android)
 - `*.wordpress.com` - Custom WordPress.com subdomain blogs (for Reader posts)
 
 ## Deep Linking
@@ -103,6 +102,9 @@ Both platforms support opening HTTPS links directly in the app instead of the br
 - `https://apps.wordpress.com/get?campaign=qr-code-media` - QR media library access
 
 **Email Tracking / Marketing Redirects:**
+- `public-api.wordpress.com/mbar/*` - Mobile email tracking links (Android supports it)
+- `public-api.wordpress.com/bar/*` - Email tracking links (Android supports it)
+
 
 
 ## Error Handling
