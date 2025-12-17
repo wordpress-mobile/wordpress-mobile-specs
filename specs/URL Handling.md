@@ -102,6 +102,9 @@ Both platforms support opening HTTPS links directly in the app instead of the br
 - `https://apps.wordpress.com/get?campaign=qr-code-media` - QR media library access
 
 **Email Tracking / Marketing Redirects:**
+- `public-api.wordpress.com/mbar/*` - Mobile email tracking links (Android supports it)
+- `public-api.wordpress.com/bar/*` - Email tracking links (Android supports it)
+
 
 
 ## Error Handling
